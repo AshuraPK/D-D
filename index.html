@@ -1,0 +1,268 @@
+<script>
+    function portaMisteriosa(){
+        alert ('Você entrou em uma sala')
+        alert ('Você encontrou um baú e nesse baú haviam 3 itens, uma espada mistica enferrujada pelas batalhas de outrora, uma batalha armadura que parecia lhe olhar como um lobo que estava preste a te predar (impossível saber se iria te ajudar ou não...) e um cogumelo misterioso, tão vermelho, quando o sangue que corria em suas veias.')
+        escolhaItem = prompt('Qual o primeiro item você gostaria de pegar:\n1 - espada, \n2 - a armadura, \n3 - cogumelo. qual você vai escolher nobre guerreiro?!')
+        while (escolhaItem < 1||escolhaItem > 3){
+            escolhaItem = prompt('Escolha corretamente! caso contrario haverá severas consequências!: \n1 - espada, \n2 - armadura, \n3 - cogumelo; escolha agora!')
+        }
+        alert ('Ao escolher o item, o báu se fechou e você não consegue escolher mais, não podendo adquirir nenhum outro item dentro desse báu (o.o)')
+        return escolhaItem
+    }
+    
+    function corredorEscuro (){
+        alert (' Vamos em direção ao corredor... boa sorte!')
+        alert ('Você encontrará troll verde com olhos vermelhos como o vinho, de sua boca, com prezas pontiagudas, escorria saliva, sua altura e porte descomunal lhe causavam calafrios, o que lhe fazia pensar... (O que mais vou encontrar nessa masmorra?)')
+    }
+    function bonusPosBatalha (){
+        bonus = prompt (' Você ganhou 10 de atributo por matar o Troll, pressione 1 para coletar a recompensa!')
+        while (bonus <1 || bonus >1){
+            bonus = prompt ('ESCOLHE CERTO! NÃO É DIFÍCIL É SO APERTAR 1 !')  
+        }
+        return bonus
+    }
+    function escolhaIrmaos (){
+        escolhaPortas = prompt ('Você deve escolher uma das portas: \n1 - Red com a porta azul \n2 - Blue com a porta vermelha')
+        while (escolhaPortas <1 || escolhaPortas > 2 ){
+            escolhaPortas = prompt ('Você não escolheu uma das portas corretamente, os irmãos vão para cima de você, não lhe dando a menor chance de sobreviver... VOCÊ MORREU')
+            alert ('VOCE ESTA MORTO!')
+            break;
+        }
+    }
+    
+    var nome = ''
+    var atkPlayer = 20
+    var defPlayer = 10
+    var lifePlayer = 30
+    
+    nome = prompt('Olá jovem aventureiro, me diga qual seu nome? ')
+    
+    alert(nome +' seja bem vindo a caverna do DRAGÃO...')
+    
+    alert (' Você caiu em um buraco e, ao se levantar, você se deparou com a seguinte escolha: ao seu lado direito, você nota uma porta grande com madeira vermelha e com o aspecto envelhecido caindo aos pedaços, e do lado direito, você nota um corredor longo e escuro sem conseguir ver o final')
+    
+    escolha = prompt (' Qual vai ser a sua decisão: \n1- você escolhe seguir à direita (porta misteriosa e avermelhada)\n2 - você escolhe seguir à esquerda (corredor escuro)')
+    
+    if (escolha == '1'){
+        item = portaMisteriosa()
+        if (item == 1){
+            atkPlayer = atkPlayer + 5
+            alert (' Ao segurar a espada enferrujada, de um cinza opaco, você vê-la levemente polida e percebe a força dos seus antigos portadores, os deuses de outrora, lhe seguindo com suas habilidades, lhe possibilitando melhorar muito... (MUITAS POSSIBILIDADES)')  
+        }
+        else if ( item == 2){
+            defPlayer = defPlayer + 10
+            alert ('Ao escolher a armadura, você sente que ela está lhe provando, lhe testando, ela deseja saber se você é digno de sua proteção, como se fosse um lobo rosnando para você! (Se for você o escolhido, terá a proteção da alcateia, se não... depois falamos disso, muahhahahahah...)')
+        }
+        else if (item == 3){
+            lifePlayer = lifePlayer + 30
+            alert (' Ao escolher o cogumelo, você sente uma forte vontade de comê-lo, se sente estranho por comer algo tão vermelho...(isso pode ser bom!) você sente sua vitalidade subindo"ISSOOOOOOOOOOOOOOOOOOO!!!, (isso pode ser ruim!) você sente sua vida sendo alterada, "NÃOOOOOOOOOOOOOOOOOOOOOOOOOOO')
+        }
+        alert ('Você sente sua força aumentando \natk: ' + atkPlayer + '\ndef: ' + defPlayer + '\nlife: ' + lifePlayer)
+        corredorEscuro()
+    }
+    
+    if (escolha == '2'){
+        corredorEscuro()
+    }
+    
+    var atkTroll = 5
+    var defTroll = 10
+    var lifeTroll = 20
+    /*-------------------------------------------------------------------------TROLL---------------------------------------------------------------*/    
+    while (lifeTroll > 0 || lifePlayer > 0){
+        
+        atkPlayer = atkPlayer - defTroll
+        lifeTroll = lifeTroll - atkPlayer
+        if (atkPlayer > 0 ){
+            lifeTroll = lifeTroll - atkPlayer
+            alert (nome + ' deu ' + atkPlayer + ' de dano no troll')
+        }
+        else{
+            alert(nome + ' não conseguiu dar dano no Troll')
+        }
+        
+        atkTroll = atkTroll - defPlayer
+        lifePlayer = lifePlayer - atkTroll
+        if (atkTroll > 0){
+            lifePlayer = lifePlayer - atkTroll
+            alert('Troll deu ' + atkTroll + ' de dano no ' + nome)
+        }
+        else{
+            alert ('Troll não conseguiu dar dano no ' + nome)
+        }
+        
+        if (lifeTroll <= 0|| lifePlayer <= 0){
+            
+            (lifeTroll <= 0)
+            alert('Parabéns, ' + nome + '! Você derrotou o Troll!');
+            alert('Seu status atual:\nVida: ' + lifePlayer + '\nDefesa: ' + defPlayer + '\nAtaque: ' + atkPlayer);
+            break;
+            
+        }
+        else if (lifePlayer <= 0)
+        alert('Infelizmente, ' + nome + ', você foi derrotado pelo Troll!');
+    break;
+}
+alert ('Ao derrotar o troll,você vê de dentro dele saindo fumaças azuis indo em sua direção!')
+    alert ('parabéns você subiu de nível!')
+    alert ('receba 10 pontos em cada habilidade base, def, vida ataque!')
+    bonus = prompt ('pressione 1 para ganhar seu bonus')
+    if (bonus == '1'){
+        bonus = bonusPosBatalha()
+        if (bonus == 1){
+            atkPlayer = atkPlayer + 15
+            defPlayer = defPlayer + 10
+            lifePlayer = lifePlayer + 10
+        }
+        alert ('Você sente sua força aumentando \natk: ' + atkPlayer + '\ndef: ' + defPlayer + '\nlife: ' + lifePlayer)
+       
+    }
+   
+    alert('no corpo do Troll você encontra um olho que lhe permite ver os caminhos no escuro, que lhe mostra uma nova rota a ser seguida')
+    
+    var redAtk = 10
+    var redDef = 15
+    var redLife = 25
+
+    
+    var blueAtk = 10
+    var blueDef = 15
+    var blueLife = 25
+    
+    alert('Você seguiu a rota, e encontrou dois irmãos RED e Blue, cada um guarda uma porta contraria a sua cor, ambos falam ao mesmo tempo:"escolha qual vai enfrentar se não os dois vão lhe atacar"')
+
+    escolhaLado = prompt (' Qual vai ser a sua decisão: \n1- você escolhe seguir à direita (para o irmão Red)\n2 - você escolhe seguir à esquerda (para o irmão Blue)')
+
+    if (escolhaLado == '1'){
+        escolhaLado = escolhaIrmaos()
+                alert (' Você escolheu a porta azul e ira lutar contra o Red')  
+        }
+        else if ( escolhaLado == '2'){
+            escolhaLado = escolhaIrmaos()
+            alert ('você escolheu a porta vermelha e ira lutar contra o irmão Blue')
+        }
+/*-----------------------------------------------------------------RED---------------------------------------------------------------------------------*/
+
+    while (redLife > 0 || lifePlayer > 0){
+     
+    atkPlayer = atkPlayer - redDef
+    redLife = redLife - atkPlayer
+    if (atkPlayer > 0 ){
+        redLife = redLife - atkPlayer
+            alert (nome + ' deu ' + atkPlayer + ' de dano no Red')
+    }
+    else{
+        alert(nome + ' não conseguiu dar dano no Red')
+    }
+        
+    redAtk = redAtk - defPlayer
+    lifePlayer = lifePlayer - redAtk
+        if (redAtk > 0){
+              lifePlayer = lifePlayer - redAtk
+            alert('Red deu ' + redAtk + ' de dano no ' + nome)
+    }
+        else{
+         alert ('Red não conseguiu dar dano no ' + nome)
+    }
+
+    if(redLife <= 0|| lifePlayer <= 0){
+                    (redLife <= 0)
+                alert('Parabéns, ' + nome + '! Você derrotou o Red!');
+                alert('Seu status atual:\nVida: ' + lifePlayer + '\nDefesa: ' + defPlayer + '\nAtaque: ' + atkPlayer);
+                resp = prompt ('qual é a resposta?')
+                alert('Não importa qual é a resposta, você morreu com uma espada vinda pelas costas, e descobre que o irmão honrado era o azul!!')
+                alert (' Ao eliminar o Red, você entra na porta azul, lá você encontra uma armadilha. Você deverá digitar qual é a junção de azul e vermelho, caso não saiba, morrerá e será game over.')
+                alert('You Are DEAD!')
+                break;
+    }
+            else if (lifePlayer <= 0)
+              alert('Infelizmente, ' + nome + ', você foi derrotado pelo Red!');
+              break;
+     
+        }
+/*--------------------------------------------------------------BLUE---------------------------------------------------------------------------------*/
+        while (blueLife > 0 || lifePlayer > 0){
+     
+     atkPlayer = atkPlayer - blueDef
+     blueLife = blueLife - atkPlayer
+     if (atkPlayer > 0 ){
+         blueLife = blueLife - atkPlayer
+             alert (nome + ' deu ' + atkPlayer + ' de dano no Blue')
+     }
+     else{
+         alert(nome + ' não conseguiu dar dano no Blue')
+     }
+         
+     blueAtk = blueAtk - defPlayer
+     lifePlayer = lifePlayer - blueAtk
+         if (blueAtk > 0){
+               lifePlayer = lifePlayer - blueAtk
+             alert('Blue deu ' + blueAtk + ' de dano no ' + nome)
+     }
+         else{
+          alert ('Blue não conseguiu dar dano no ' + nome)
+ 
+     }
+ 
+     if(blueLife <= 0|| lifePlayer <= 0){
+                    (blueLife <= 0)
+     alert('Parabéns, ' + nome + '! Você derrotou o Blue!');
+            alert('Seu status atual:\nVida: ' + lifePlayer + '\nDefesa: ' + defPlayer + '\nAtaque: ' + atkPlayer);
+     }
+
+     alert ('Você derrotou o desonrado, por esse serviço os fantasmas da masmorra lhe parabenizam, e lhe concedem algumas recompensas')
+     alert('receba sua experiencia, recebendo 10 em cada um dos seus Atributos')
+     alert('RECEBA TAMBÉM A CHAVE DA PORTA DA SALA DO BOSS')
+    }
+    alert ('Você entra na sala do boss')
+    alert ('ELE se revela com suas asas negras')
+    alert ('Como uma sombra ELE desce')
+    alert ('COM OLHOS VERMELHOS, E DENTES COMO ESTACAS, ESCAMAS TÃO NEGRAS QUANTO A NOITE E DURAS QUANTO O MELHOR AÇO FUNDIDO')
+    alert ('SEU ALITO SEMELHANTE A MORTE!')
+    alert ('em sua garganta carrega o sol, a mais arrogante das criaturas e mais temivel também')
+    alert ('Dragon Black king se apresenta na arena!')
+    alert('que o embate mais epico de sua vida comece')
+    alert ('VOCE NÃO SAIRA VIVO')
+    /*---------------------------------------------------------------------BOSS------------------------------------------------------------------------*/
+var atkDbk = 50
+var defDbk = 50
+var lifeDbk = 50
+
+while (lifeDbk > 0 || lifePlayer > 0){
+        
+        atkPlayer = atkPlayer - defDbk
+        lifeDbk = lifeDbk - atkPlayer
+        if (atkPlayer > 0 ){
+            lifeDbk = lifeDbk - atkPlayer
+            alert (nome + ' deu ' + atkPlayer + ' de dano no Dragon Black king')
+        }
+        else{
+            alert(nome + ' não conseguiu dar dano no Dragon Black king')
+        }
+        
+        atkDbk = atkDbk - defPlayer
+        lifePlayer = lifePlayer - atkDbk
+        if (atkDbk > 0){
+            lifePlayer = lifePlayer - atkDbk
+            alert('Dragon Black king deu ' + atkDbk + ' de dano no ' + nome)
+        }
+        else{
+            alert ('Dragon Black king não conseguiu dar dano no ' + nome)
+        }
+        
+        if (lifeDbk <= 0|| lifePlayer <= 0){
+            
+            (lifeDbk <= 0)
+            alert('Parabéns, ' + nome + '! Você derrotou o Dragon Black king!');
+            alert('Seu status atual:\nVida: ' + lifePlayer + '\nDefesa: ' + defPlayer + '\nAtaque: ' + atkPlayer);
+            break;
+            
+        }
+        else if (lifePlayer <= 0)
+        alert('Não leve para o lado pessoal, ' + nome + ', ele, Dragon Black king! é insuperável');
+    break;
+}
+alert ('Voce conseguiu, esse é o final do jogo')
+alert ('Obrigado por derrotar o dragão, desfrute de sua riqueza')
+alert ('Até a proxima!')
+    </script>
